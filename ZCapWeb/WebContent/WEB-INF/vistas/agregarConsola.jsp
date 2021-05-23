@@ -17,11 +17,13 @@
 	<div class="column is-6">
 	<div class="notification is-danger">
 	<h6>Existen errores en el formulario</h6>
+	<div class="content">
 	<ul>
 	<c:forEach var="error" items="${errores}">
 	<li>${error}</li>
 	</c:forEach>
 	</ul>
+	</div>
 	</div>
 	</div>
 	</div>

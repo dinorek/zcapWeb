@@ -38,7 +38,6 @@ public class ConsolasDAO implements ConsolasDAOLocal {
 
 	@Override
 	public List<Consola> filterByName(String nombre) {
-		// TODO Auto-generated method stub
 		return consolas.stream().filter(c->c.getNombre().contains(nombre)).collect(Collectors.toList());
 		
 	}

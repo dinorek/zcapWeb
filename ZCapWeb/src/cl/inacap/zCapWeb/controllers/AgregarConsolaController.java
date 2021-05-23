@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cl.inacap.zCapModel.dao.ConsolasDAOLocal;
+import cl.inacap.zCapModel.dto.Consola;
 
 /**
  * Servlet implementation class AgregarConsolaController
@@ -16,6 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AgregarConsolaController.do")
 public class AgregarConsolaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private ConsolasDAOLocal consolasDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -58,6 +65,11 @@ public class AgregarConsolaController extends HttpServlet {
 		}
 		if(errores.isEmpty()) {
 			//Puedo ingresar la consola porque esta vacio
+			Consola consola = new Consola();
+			consola.setNombre(nombre);
+			consola.setMarca(marca);
+			consola.setAnioLanzamiento(anio);
+			consolasDAO.save(consola);
 			request.setAttribute("mensaje", "Registrado Exitosamente");
 		}else {
 			//Mostrar los errores

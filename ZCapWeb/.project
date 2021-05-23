@@ -3,6 +3,7 @@
 	<name>ZCapWeb</name>
 	<comment></comment>
 	<projects>
+		<project>ZCapModel</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
