@@ -1,6 +1,9 @@
 package cl.inacap.zCapWeb.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +38,34 @@ public class AgregarConsolaController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		List<String> errores= new ArrayList<>();
+		
+		String nombre = request.getParameter("nombre-txt").trim();
+		if(nombre.isEmpty()) {
+			errores.add("Debe ingresar un nombre");
+		}
+		String anioTxt = request.getParameter("anio-txt").trim();
+		int anio=0;
+		try {
+			anio= Integer.parseInt(anioTxt);
+		}catch(Exception ex) {
+			errores.add("El año debe ser numerico");
+		}
+		String marca = request.getParameter("marca-select").trim();
+		if(marca.isEmpty()) {
+			errores.add("Debe seleccionar una marca");
+		}
+		if(errores.isEmpty()) {
+			//Puedo ingresar la consola porque esta vacio
+			request.setAttribute("mensaje", "Registrado Exitosamente");
+		}else {
+			//Mostrar los errores
+			request.setAttribute("errores", errores);
+		}
+		
 		doGet(request, response);
+		
 	}
 
 }

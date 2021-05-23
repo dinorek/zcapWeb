@@ -16,20 +16,20 @@ import cl.inacap.zCapModel.dto.Juego;
 @Stateless
 @LocalBean
 public class JuegosDAO implements JuegosDAOLocal {
-	
+
 	private static List<Juego> juegos = new ArrayList<>();
 
-    /**
-     * Default constructor. 
-     */
-    public JuegosDAO() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public JuegosDAO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void save(Juego juego) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -47,7 +47,8 @@ public class JuegosDAO implements JuegosDAOLocal {
 	@Override
 	public List<Juego> filterByName(String nombre) {
 		// TODO Auto-generated method stub
-		return juegos.stream().filter(j->j.getNombre().toLowerCase().contains(nombre.toLowerCase())).collect(Collectors.toList());
+		return juegos.stream().filter(j -> j.getNombre().toLowerCase().contains(nombre.toLowerCase()))
+				.collect(Collectors.toList());
 	}
 
 }
